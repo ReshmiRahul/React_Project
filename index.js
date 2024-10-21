@@ -70,31 +70,23 @@ app.get('/api/skills', async (req, res) => {
   res.json(skills);
 });
 
-// Render projects list
 app.get('/projects', async (req, res) => {
   try {
     const projects = await Project.find();
-    if (!projects.length) {
-      return res.status(404).send('No projects found');
-    }
     res.render('projects', { projects });
   } catch (err) {
     console.error('Error fetching projects:', err);
-    res.status(500).send('Internal Server Error');
+    return res.status(500).render('error', { message: 'Error fetching projects' }); // Render an error page
   }
 });
 
-// Render skills list
 app.get('/skills', async (req, res) => {
   try {
     const skills = await Skill.find();
-    if (!skills.length) {
-      return res.status(404).send('No skills found');
-    }
-    res.render('skills', { skills }); 
+    res.render('skills', { skills });
   } catch (err) {
     console.error('Error fetching skills:', err);
-    res.status(500).send('Internal Server Error');
+    return res.status(500).render('error', { message: 'Error fetching skills' }); // Render an error page
   }
 });
 
