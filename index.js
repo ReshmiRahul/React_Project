@@ -74,6 +74,9 @@ app.get('/api/skills', async (req, res) => {
 app.get('/projects', async (req, res) => {
   try {
     const projects = await Project.find();
+    if (!projects.length) {
+      return res.status(404).send('No projects found');
+    }
     res.render('projects', { projects });
   } catch (err) {
     console.error('Error fetching projects:', err);
@@ -85,12 +88,16 @@ app.get('/projects', async (req, res) => {
 app.get('/skills', async (req, res) => {
   try {
     const skills = await Skill.find();
+    if (!skills.length) {
+      return res.status(404).send('No skills found');
+    }
     res.render('skills', { skills }); 
   } catch (err) {
     console.error('Error fetching skills:', err);
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 // Delete a project by ID
 app.delete('/admin/projects/:id', async (req, res) => {
