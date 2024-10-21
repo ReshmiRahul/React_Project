@@ -4,7 +4,8 @@
   "description": "My first Express app",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./index.js"
+    "dev": "nodemon ./index.js",
+    "start": "node index.js"
   },
   "author": "Joanna K",
   "license": "ISC",
