@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 Projects List
+  if projects.length
+    ul
+      each project in projects
+        li
+          h2= project.name
+          p= project.description
+          p Technologies: #{project.technologies.join(', ')}
+          p GitHub: 
+            a(href=project.githubLink)= project.githubLink
+          if project.liveLink
+            p Live Demo: 
+              a(href=project.liveLink)= project.liveLink
+
+          // Form for deleting the project
+          form(action=`/admin/projects/${project._id}/delete`, method='POST', style='display:inline')
+            button(type='submit') Delete
+
+          // Link for editing the project
+          form(action=`/admin/projects/${project._id}/edit`, method='GET', style='display:inline')
+            button(type='submit') Edit
+  else
+    p No projects found.

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Edit Project
+  form(action=`/admin/projects/${project._id}?_method=PUT`, method='POST')
+    label(for='name') Project Name
+    input(type='text', name='name', value=project.name, required)
+
+    label(for='description') Description
+    textarea(name='description', required)= project.description
+
+    label(for='technologies') Technologies (comma-separated)
+    input(type='text', name='technologies', value=project.technologies.join(', '), required)
+
+    label(for='githubLink') GitHub Link
+    input(type='url', name='githubLink', value=project.githubLink, required)
+
+    label(for='liveLink') Live Link
+    input(type='url', name='liveLink', value=project.liveLink)
+
+    button(type='submit') Update Project

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 Edit Skill
+  form(action=`/admin/skills/${skill._id}?_method=PUT`, method='POST')
+    label(for='name') Skill Name
+    input(type='text', name='name', value=skill.name, required)
+
+    label(for="proficiency") Proficiency:
+    select(name="proficiency")
+      option(value="Beginner") Beginner
+      option(value="Intermediate") Intermediate
+      option(value="Expert") Expert
+      
+    button(type='submit') Update Skill

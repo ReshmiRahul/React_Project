@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 Add a New Skill
+  form(action="/admin/skills" method="POST")
+    label(for="name") Skill Name:
+    input(type="text" name="name" required)
+
+    label(for="proficiency") Proficiency:
+    select(name="proficiency")
+      option(value="Beginner") Beginner
+      option(value="Intermediate") Intermediate
+      option(value="Expert") Expert
+
+    button(type="submit") Add Skill

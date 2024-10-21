@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 Skills List
+  if skills.length
+    ul
+      each skill in skills
+        li
+          h2= skill.name
+          p Proficiency: #{skill.proficiency}
+          
+          // Form for deleting the skill
+          form(action=`/admin/skills/${skill._id}/delete`, method='POST', style='display:inline')
+            button(type='submit') Delete
+
+          // Link for editing the skill
+          form(action=`/admin/skills/${skill._id}/edit`, method='GET', style='display:inline')
+            button(type='submit') Edit
+  else
+    p No skills found.

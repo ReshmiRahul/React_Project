@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Add a New Project
+  form(action="/admin/projects" method="POST")
+    label(for="name") Project Name:
+    input(type="text" name="name" required)
+
+    label(for="description") Project Description:
+    textarea(name="description" required)
+
+    label(for="technologies") Technologies (comma separated):
+    input(type="text" name="technologies" required)
+
+    label(for="githubLink") GitHub Link:
+    input(type="url" name="githubLink" required)
+
+    label(for="liveLink") Live Link:
+    input(type="url" name="liveLink")
+
+    button(type="submit") Submit
