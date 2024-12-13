@@ -5,8 +5,12 @@ require('dotenv').config();
 
 const Project = require('./models/project'); 
 const Skill = require('./models/skill');     
+const cors = require('cors');
 
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
